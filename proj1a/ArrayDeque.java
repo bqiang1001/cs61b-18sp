@@ -2,7 +2,6 @@ public class ArrayDeque<T> {
     private int capacity = 8;
     private final double fillingFactor = 0.25;
     private int front;
-    private int back;
     private int size;
     private T[] arr;
     public ArrayDeque() {
