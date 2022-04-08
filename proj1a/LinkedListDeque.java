@@ -2,9 +2,9 @@ public class LinkedListDeque<T> {
 
 
     private static class ListNode<T> {
-        public T item;
-        public ListNode next;
-        public ListNode prev;
+        private T item;
+        private ListNode next;
+        private ListNode prev;
         public ListNode(T val) {
             item = val;
             next = null;
@@ -18,8 +18,8 @@ public class LinkedListDeque<T> {
         }
     }
 
-    public int size;
-    public ListNode sentinel;
+    private int size;
+    private ListNode sentinel;
 
     public LinkedListDeque() {
         sentinel = new ListNode();
@@ -28,15 +28,15 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    public LinkedListDeque(LinkedListDeque other) {
-        sentinel = new ListNode();
-        sentinel.next = sentinel;
-        sentinel.prev = sentinel;
-        size = 0;
-        for (int i = 0; i < other.size(); i++) {
-            this.addLast((T) other.get(i));
-        }
-    }
+//    public LinkedListDeque(LinkedListDeque other) {
+//        sentinel = new ListNode();
+//        sentinel.next = sentinel;
+//        sentinel.prev = sentinel;
+//        size = 0;
+//        for (int i = 0; i < other.size(); i++) {
+//            this.addLast((T) other.get(i));
+//        }
+//    }
 
     public void addFirst(T item) {
         ListNode temp = sentinel.next;
@@ -67,7 +67,7 @@ public class LinkedListDeque<T> {
     public void printDeque() {
         int k = size;
         ListNode node = sentinel;
-        while (k -- > 0) {
+        while (k-- > 0) {
             System.out.print(node.item);
             node = node.next;
             if (k > 0) {
@@ -100,21 +100,21 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             return null;
         }
         ListNode node = sentinel;
-        while (index -- > 0) {
+        while (index-- > 0) {
             node = node.next;
         }
         return (T) node.item;
     }
 
     public T getRecursive(int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             return null;
         }
-        return getRecursive(index, sentinel);
+        return getRecursive(index, sentinel.next);
     }
 
     private T getRecursive(int index, ListNode node) {

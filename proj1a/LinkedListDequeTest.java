@@ -84,6 +84,8 @@ public class LinkedListDequeTest {
 			lld1.addFirst(i);
 		}
 		lld1.printDeque();
+		System.out.println('\n');
+		System.out.println(lld1.get(10));
 		for (int i = 0; i < 1000; i++) {
 			lld1.removeFirst();
 		}
