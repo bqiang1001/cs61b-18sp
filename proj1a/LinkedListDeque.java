@@ -103,7 +103,7 @@ public class LinkedListDeque<T> {
         if (index < 0 || index >= size) {
             return null;
         }
-        ListNode node = sentinel;
+        ListNode node = sentinel.next;
         while (index-- > 0) {
             node = node.next;
         }

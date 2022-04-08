@@ -8,7 +8,6 @@ public class ArrayDeque<T> {
     public ArrayDeque() {
         arr = (T[]) new Object[capacity];
         front = 0;
-        back = 0;
         size = 0;
     }
 
@@ -25,11 +24,10 @@ public class ArrayDeque<T> {
 
     private void resize(int newCapacity) {
         T[] newArray = (T[]) new Object[newCapacity];
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             newArray[i] = arr[(front + i) % capacity];
         }
         front = 0;
-        back = size - 1;
         arr = newArray;
         capacity = newCapacity;
     }
@@ -52,7 +50,7 @@ public class ArrayDeque<T> {
         if (size == capacity) {
             resize(2 * capacity);
         }
-        back = (back++) % capacity;
+        int back = (front + size) % capacity;
         arr[back] = item;
         size++;
     }
@@ -80,7 +78,7 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        if (size * 4 < capacity && capacity > 16) {
+        if (size * 4 < capacity && capacity >= 16) {
             resize(capacity / 4);
         }
 
@@ -95,9 +93,10 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        if (size * 4 < capacity && capacity > 16) {
+        if (size * 4 < capacity && capacity >= 16) {
             resize(capacity / 4);
         }
+        int back = (front + size - 1) % capacity;
         T returnedItem = arr[back];
         arr[back] = null;
         back = back == 0 ? capacity - 1 : back - 1;
