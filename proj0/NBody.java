@@ -51,13 +51,13 @@ public class NBody {
         Double[] yForces = new Double[numOfPlanets];
         Double time = 0.0;
 
-        while(time < T) {
-            for(int i = 0; i < numOfPlanets; i++) {
+        while (time < T) {
+            for (int i = 0; i < numOfPlanets; i++) {
                 xForces[i] = planets[i].calcNetForceExertedByX(planets);
                 yForces[i] = planets[i].calcNetForceExertedByY(planets);
             }
 
-            for(int i = 0; i < numOfPlanets; i++) {
+            for (int i = 0; i < numOfPlanets; i++) {
                 planets[i].update(dt, xForces[i], yForces[i]);
             }
 
