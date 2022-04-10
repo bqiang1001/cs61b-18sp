@@ -32,7 +32,7 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("AA", cc));
         assertFalse(palindrome.isPalindrome("AxA", cc));
     }
-    }
+
 
 
 
